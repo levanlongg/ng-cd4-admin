@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AdProductTypeComponent } from './ad-product-type.component'
+import { AdNewsTypeComponent } from './ad-news-type.component';
 import { RouterModule, Routes } from '@angular/router';
 
 
@@ -8,14 +8,14 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    component: AdProductTypeComponent,
+    component: AdNewsTypeComponent,
   }, 
 ];
 
 @NgModule({
-  declarations: [AdProductTypeComponent],
+  declarations: [AdNewsTypeComponent],
   imports: [
     RouterModule.forChild(routes),
   ]
 })
-export class AdProductTypeModule { }
+export class AdNewsTypeModule { }

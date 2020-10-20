@@ -1,3 +1,4 @@
+<p>ad-user works!</p>
 <body class="cbp-spmenu-push">
 	<div class="main-content">
 		<!--left-fixed -navigation-->
@@ -9,7 +10,7 @@
 							<a [routerLink]="['/ad-home']" routerLinkActive="router-link-active" class="active"><i class="fa fa-home nav_icon"></i>Home</a>
 						</li>
 						<li>
-							<a [routerLink]="['/ad-product']" routerLinkActive="router-link-active"><i class="fa fa-cogs nav_icon"></i>Quản lý sản phẩm <span class="nav-badge">12</span> <span class="fa arrow"></span></a>
+							<a [routerLink]="['/ad-news']" routerLinkActive="router-link-active"><i class="fa fa-cogs nav_icon"></i>Quản lý tin tức <span class="nav-badge">12</span> <span class="fa arrow"></span></a>
 							<ul class="nav nav-second-level collapse">
 								<li>
 									<a href="grids.html">Grid System</a>
@@ -21,7 +22,7 @@
 							<!-- /nav-second-level -->
 						</li>
 						<li class="">
-							<a [routerLink]="['/ad-product-tyle']" routerLinkActive="router-link-active"><i class="fa fa-book nav_icon"></i>Quản lý loại sản phẩm <span class="fa arrow"></span></a>
+							<a [routerLink]="['/ad-news-type']" routerLinkActive="router-link-active"><i class="fa fa-book nav_icon"></i>Quản lý loại tin <span class="fa arrow"></span></a>
 							<ul class="nav nav-second-level collapse">
 								
 								<li>
@@ -31,9 +32,9 @@
 							<!-- /nav-second-level -->
 						</li>
 						<li>
-							<a [routerLink]="['/ad-producer']" routerLinkActive="router-link-active"><i class="fa fa-th-large nav_icon"></i>Quản lý nhà sản xuất </a>
+							<a [routerLink]="['/ad-category']" routerLinkActive="router-link-active"><i class="fa fa-th-large nav_icon"></i>Quản lý danh mục </a>
 						</li>
-						<li>
+						<!--<li>
 							<a [routerLink]="['/ad-import-invoice']" routerLinkActive="router-link-active"><i class="fa fa-envelope nav_icon"></i>Quản lý hóa đơn nhập<span class="fa arrow"></span></a>
 							<ul class="nav nav-second-level collapse">
 								<li>
@@ -43,9 +44,9 @@
 									<a href="compose.html">Compose email</a>
 								</li>
 							</ul>
-							<!-- //nav-second-level -->
-						</li>
-						<!-- <li>
+							 //nav-second-level 
+						</li> 
+						<li>
 							<a href="tables.html"><i class="fa fa-table nav_icon"></i>Tables <span class="nav-badge">05</span></a>
 						</li>
 						<li>
@@ -279,23 +280,21 @@
 		<div id="page-wrapper">
 			<div class="main-page">
 				<div class="container">
-          <h3>Quản lý loại sản phẩm</h3><br/>
+          <h3>Quản lý loại tin</h3><br/>
           <button class="btn btn-success">Thêm +</button>
           <div>
           <table class="table table-bordered">
             <thead>
               <tr>
-                <th>Id LSP</th>
-                <th>Tên loại sản phẩm</th>
-                <th>Đặc điểm</th>
+                <th>Id</th>
+                <th>Tên loại tin</th>
                 <th>Tác vụ</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>John</td>
+                <td>J4</td>
                 <td>Doe</td>
-				<td>1</td>
                 <td>
 					<button class="btn btn-info"><i class="fa fa-eye" aria-hidden="true"></i></button>
 					<button class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i></button>

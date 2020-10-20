@@ -21,7 +21,7 @@
 							<!-- /nav-second-level -->
 						</li>
 						<li class="">
-							<a [routerLink]="['/ad-product-tyle']" routerLinkActive="router-link-active"><i class="fa fa-book nav_icon"></i>Quản lý loại sản phẩm <span class="fa arrow"></span></a>
+							<a [routerLink]="['/ad-product-type']" routerLinkActive="router-link-active"><i class="fa fa-book nav_icon"></i>Quản lý loại sản phẩm <span class="fa arrow"></span></a>
 							<ul class="nav nav-second-level collapse">
 								
 								<li>
@@ -279,32 +279,37 @@
 		<div id="page-wrapper">
 			<div class="main-page">
 				<div class="container">
-          <h3>Quản lý loại sản phẩm</h3><br/>
-          <button class="btn btn-success">Thêm +</button>
-          <div>
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th>Id LSP</th>
-                <th>Tên loại sản phẩm</th>
-                <th>Đặc điểm</th>
-                <th>Tác vụ</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>John</td>
-                <td>Doe</td>
-				<td>1</td>
-                <td>
-					<button class="btn btn-info"><i class="fa fa-eye" aria-hidden="true"></i></button>
-					<button class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-					<button class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-				</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>   
+					<h3>Quản lý hóa đơn nhập</h3><br/>
+                    <button class="btn btn-success">Thêm +</button>
+                    <button class="btn btn-success">In ||</button>
+					<div>
+					<table class="table table-bordered">
+					  <thead>
+						<tr>
+						  <th style="width:20%">Người nhập</th>
+						  <th style="width:10%">Ngày nhập</th>
+						  <th style="width:10%">Nhà sản xuất</th>
+						  <th style="width:10%">Số lượng</th>
+						  <th style="width:10%">Tổng tiền</th>
+						  <th>Tác vụ</th>
+						</tr>
+					  </thead>
+					  <tbody>
+						<tr>
+						  <td>John</td>
+						  <td>Doe</td>
+						  <td>1</td>
+						  <td>1</td>
+						  <td>L01</td>
+						  <td>
+							  <button class="btn btn-info"><i class="fa fa-eye" aria-hidden="true"></i></button>
+							  <button class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+							  <button class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+						  </td>
+						</tr>
+					  </tbody>
+					</table>
+				  </div>   
       </div>     
 				<div class="clearfix"> </div>
 			</div>

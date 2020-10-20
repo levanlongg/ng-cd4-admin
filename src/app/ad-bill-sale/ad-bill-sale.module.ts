@@ -1,21 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AdProductTypeComponent } from './ad-product-type.component'
+import { AdBillSaleComponent } from './ad-bill-sale.component';
 import { RouterModule, Routes } from '@angular/router';
-
 
 
 const routes: Routes = [
   {
     path: '',
-    component: AdProductTypeComponent,
+    component: AdBillSaleComponent,
   }, 
 ];
 
 @NgModule({
-  declarations: [AdProductTypeComponent],
+  declarations: [AdBillSaleComponent],
   imports: [
     RouterModule.forChild(routes),
   ]
 })
-export class AdProductTypeModule { }
+export class AdBillSaleModule { }
