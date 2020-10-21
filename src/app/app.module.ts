@@ -19,6 +19,9 @@ import { AdCategoryModule } from './ad-category/ad-category.module';
 import { AdBillSaleModule } from './ad-bill-sale/ad-bill-sale.module';
 import { AdCaculativePointsModule } from './ad-caculative-points/ad-caculative-points.module';
 import { AdRevenueStatisticsModule } from './ad-revenue-statistics/ad-revenue-statistics.module';
+import {HttpClientModule} from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+
 
 const routes: Routes = [
   {
@@ -101,6 +104,8 @@ const routes: Routes = [
     AdImportInvoiceModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
+    HttpClientModule,
+    // CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

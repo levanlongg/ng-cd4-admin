@@ -15,7 +15,9 @@ const routes: Routes = [
 @NgModule({
   declarations: [AdNewsTypeComponent],
   imports: [
+    CommonModule,
     RouterModule.forChild(routes),
+    
   ]
 })
 export class AdNewsTypeModule { }
