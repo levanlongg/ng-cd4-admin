@@ -21,6 +21,7 @@ import { AdCaculativePointsModule } from './ad-caculative-points/ad-caculative-p
 import { AdRevenueStatisticsModule } from './ad-revenue-statistics/ad-revenue-statistics.module';
 import {HttpClientModule} from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { LoginModule } from './login/login.module';
 
 
 const routes: Routes = [
@@ -73,6 +74,10 @@ const routes: Routes = [
     loadChildren: () => import('./ad-revenue-statistics/ad-revenue-statistics.module').then(m => m.AdRevenueStatisticsModule)  
   },
   {
+    path: 'ad-login',
+    loadChildren: () => import('./login/login.module').then(m => m.LoginModule)  
+  },
+  {
     path: '',
     redirectTo: '/ad-product',
     pathMatch: 'full',
@@ -98,6 +103,7 @@ const routes: Routes = [
     AdCaculativePointsModule,
     AdRevenueStatisticsModule,
     AdCategoryModule,
+    LoginModule,
     AdBillSaleModule,
     AdNewsTypeModule,
     AdProductTypeModule,
@@ -105,7 +111,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
-    // CommonModule
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
