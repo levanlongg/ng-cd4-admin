@@ -8,7 +8,7 @@ import {map} from 'rxjs/operators';
 })
 export class AdNewsTypeService {
 
-  public urlAPI = "https://localhost:44380/api/NewsTypes";
+  public urlAPI = "https://localhost:44343/api/NewsTypes";
   constructor(private _http: HttpClient) { }
   
   getList(): Observable<any[]>{
