@@ -289,18 +289,16 @@
                 <th>Id</th>
                 <th>Ngày bán</th>
                 <th>Người bán</th>
-                <th>Điểm thưởng</th>
                 <th>Tổng tiền</th>
                 <th>Tác vụ</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>J4</td>
-                <td>Doe</td>
-                <td>Doe</td>
-                <td>Doe</td>
-                <td>Doe</td>
+              <tr *ngFor="let item of items">
+				<td>{{item.id}}</td>
+				<td>{{item.dateSale}}</td>
+				<td>{{item.personImportId}}</td>
+				<td>{{item.totalMoney}}</td>
                 <td>
 					<button class="btn btn-info"><i class="fa fa-eye" aria-hidden="true"></i></button>
 					<button class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i></button>
