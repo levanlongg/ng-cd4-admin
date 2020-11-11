@@ -66,7 +66,7 @@ const routes: Routes = [
     loadChildren: () => import('./ad-bill-sale/ad-bill-sale.module').then(m => m.AdBillSaleModule)  
   },
   {
-    path: 'ad-acculative-points',
+    path: 'ad-caculative-points',
     loadChildren: () => import('./ad-caculative-points/ad-caculative-points.module').then(m => m.AdCaculativePointsModule)  
   },
   {

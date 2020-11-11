@@ -298,7 +298,7 @@
 			<div class="main-page">
 				<div class="container">
 					<h3>Quản lý loại sản phẩm</h3><br />
-					<button class="btn btn-success">Thêm +</button>
+					<button class="btn btn-success" (click)="showAdd()">Thêm +</button>
 					<div>
 						<table class="table table-bordered">
 							<thead>
@@ -316,10 +316,10 @@
 									<td>{{item.characteristics}}</td>
 									<td>
 										<button class="btn btn-info"><i class="fa fa-eye"
+												aria-hidden="true" (click)="showDetail(item.id)"></i></button>
+										<button class="btn btn-success"(click)="showEdit(item.id)"><i class="fa fa-pencil"
 												aria-hidden="true"></i></button>
-										<button class="btn btn-success"><i class="fa fa-pencil"
-												aria-hidden="true"></i></button>
-										<button class="btn btn-danger"><i class="fa fa-trash-o"
+										<button class="btn btn-danger" (click)="deleteShow(item.id)"><i class="fa fa-trash-o"
 												aria-hidden="true"></i></button>
 									</td>
 								</tr>
@@ -330,9 +330,88 @@
 				<div class="clearfix"> </div>
 			</div>
 		</div>
-		<!--footer-->
-
-		<!--//footer-->
+	</div>
+	<div bsModal #editAndADD="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+		aria-labelledby="dialog-sizes-name1">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<form #productTypeForm="ngForm" (ngSubmit)="SaveForm(productTypeForm.value)" *ngIf="entity">
+					<div class="modal-header">
+						<h4 id="dialog-sizes-name1" class="modal-title pull-left">Quản lý loại tin</h4>
+						<button type="button" class="close pull-right" (click)="editAndADD.hide()" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label for="id">Mã loại:</label>
+							<input type="hidden" [(ngModel)]="checkedid">
+							<input type="text" class="form-control" value="" name="id" [(ngModel)]="entity.id">
+						</div>
+						<div class="form-group">
+							<label for="productypeName">Tên loại:</label>
+							<input type="text" class="form-control" value="" name="productypeName"
+								[(ngModel)]="entity.productypeName">
+						</div>
+						<div class="form-group">
+							<label for="characteristics">Mô tả:</label>
+							<input type="text" class="form-control" value="" name="characteristics"
+								[(ngModel)]="entity.characteristics">
+						</div>
+						<!-- <button type="submit" class="btn btn-default">Submit</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+						<!-- </form> -->
+					</div>
+					<div class="modal-footer">
+						<button type="submit" class="btn btn-default">Submit</button>
+						<button type="button" class="btn btn-default" (click)="editAndADD.hide()"
+							data-dismiss="modal">Close</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div bsModal #editAndADD1="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+		aria-labelledby="dialog-sizes-name1">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<form #productTypeForm="ngForm" (ngSubmit)="SaveForm(productTypeForm.value)" *ngIf="entity1">
+					<div class="modal-header">
+						<h4 id="dialog-sizes-name1" class="modal-title pull-left">Quản lý loại tin</h4>
+						<button type="button" class="close pull-right" (click)="editAndADD1.hide()" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div >
+						<div class="form-group">
+							<label for="id">Mã loại:</label>
+							<input type="hidden" [(ngModel)]="checkedid">
+							<input type="text" class="form-control" value="" name="id" [(ngModel)]="entity1.id">
+						</div>
+						<div class="form-group">
+							<label for="productypeName">Tên loại:</label>
+							<input type="text" class="form-control" value="" name="productypeName"
+								[(ngModel)]="entity1.productypeName">
+						</div>
+						<div class="form-group">
+							<label for="characteristics">Mô tả:</label>
+							<input type="text" class="form-control" value="" name="characteristics"
+								[(ngModel)]="entity1.characteristics">
+						</div>
+						</div>
+						<!-- <button type="submit" class="btn btn-default">Submit</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+						<!-- </form> -->
+					</div>
+					<div class="modal-footer">
+						<!-- <button type="submit" class="btn btn-default">Submit</button> -->
+						<button type="button" class="btn btn-default" (click)="editAndADD1.hide()"
+							data-dismiss="modal">Close</button>
+					</div>
+				</form>
+			</div>
+		</div>
 	</div>
 	<!-- Classie -->
 	<style>
@@ -340,7 +419,6 @@
 			margin-left: 1%;
 		}
 	</style>
-	<script src="./assets/js/classie.js"></script>
 	<script>
 		var menuLeft = document.getElementById('cbp-spmenu-s1'),
 			showLeftPush = document.getElementById('showLeftPush'),
@@ -361,8 +439,4 @@
 		}
 	</script>
 	<!--scrolling js-->
-	<script src="./assets/js/jquery.nicescroll.js"></script>
-	<script src="./assets/js/scripts.js"></script>
-	<!--//scrolling js-->
-	<!-- Bootstrap Core JavaScript -->
-	<script src="./assets/js/bootstrap.js"> </script>
+	

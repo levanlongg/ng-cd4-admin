@@ -11,19 +11,22 @@ export class AdNewsTypeComponent implements OnInit {
   [x: string]: any;
 
   @ViewChild('editAndADD', { static: false }) editAndADD: ModalDirective;
+  @ViewChild('editAndADD1', { static: false }) editAndADD1: ModalDirective;
+
   constructor(private typenewService: AdNewsTypeService) {}
 
   public entity: any;
+  public entity1: any;
   public items: any[];
   public id: string;
   public checkedid: any;
   public keyword: string;
   ngOnInit(): void {
-    // this.typenewService.getList().subscribe((res: any)=>{
+    this.typenewService.getList().subscribe((res: any)=>{
 
-    //   this.items = res;
-    //   console.log(this.items);
-    // });
+      this.items = res;
+      console.log(this.items);
+    });
     this.loadData();
   }
   loadData() {
@@ -44,6 +47,14 @@ export class AdNewsTypeComponent implements OnInit {
       this.entity = res;
     });
     this.editAndADD.show();
+  }
+  showDetail(id: any) {
+    debugger;
+    this.checkedid = 1;
+    this.typenewService.GetSingle(id).subscribe((res) => {
+      this.entity1 = res;
+    });
+    this.editAndADD1.show();
   }
   SaveForm(values: any) {
     if (this.checkedid == 0) {

@@ -9,9 +9,9 @@ const HttpOptionss = {
 @Injectable({
   providedIn: 'root'
 })
-export class AdProductTypeService {
+export class AdCategoryService {
 
-  public urlAPI = "https://localhost:44380/api/ProductTypes";
+  public urlAPI = "https://localhost:44380/api/Categories";
   constructor(private _http: HttpClient) { }
 
   getList(): Observable<any[]> {
@@ -30,7 +30,6 @@ export class AdProductTypeService {
       return res;
     }));
   }
-  
 //   editItem(id: any, data: any): Observable<any> {
 //     return this._http.put(this.urlAPI + id, data).pipe(map((res: Response) => res.json()))
 // }
