@@ -11,7 +11,7 @@ const HttpOptionss = {
 })
 export class AdProductService {
 
-  public urlAPI = "https://localhost:44380/api/Products";
+  public urlAPI = "https://localhost:44338/api/Products";
   constructor(private _http: HttpClient) { }
 
   getList(): Observable<any[]> {

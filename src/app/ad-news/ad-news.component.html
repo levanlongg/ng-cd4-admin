@@ -8,90 +8,27 @@
 				<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
 					<ul class="nav" id="side-menu">
 						<li>
-							<a [routerLink]="['/ad-home']" routerLinkActive="router-link-active" class="active"><i
-									class="fa fa-home nav_icon"></i>Home</a>
+							<a [routerLink]="['/dashboard']" routerLinkActive="router-link-active" class="active"><i
+									class="fa fa-home nav_icon"></i>Dashboard</a>
 						</li>
 						<li>
 							<a [routerLink]="['/ad-news']" routerLinkActive="router-link-active"><i
-									class="fa fa-cogs nav_icon"></i>Quản lý tin tức <span class="nav-badge">12</span>
-								<span class="fa arrow"></span></a>
-							<ul class="nav nav-second-level collapse">
-								<li>
-									<a href="grids.html">Grid System</a>
-								</li>
-								<li>
-									<a href="media.html">Media Objects</a>
-								</li>
-							</ul>
-							<!-- /nav-second-level -->
+									class="fa fa-cogs nav_icon"></i>Quản lý tin tức
+								</a>
 						</li>
-						<li class="">
+						<li>
 							<a [routerLink]="['/ad-news-type']" routerLinkActive="router-link-active"><i
-									class="fa fa-book nav_icon"></i>Quản lý loại tin <span class="fa arrow"></span></a>
-							<ul class="nav nav-second-level collapse">
-
-								<li>
-									<a href="typography.html">Typography</a>
-								</li>
-							</ul>
-							<!-- /nav-second-level -->
+									class="fa fa-book nav_icon"></i>Quản lý loại tin
+									</a>
 						</li>
 						<li>
 							<a [routerLink]="['/ad-category']" routerLinkActive="router-link-active"><i
 									class="fa fa-th-large nav_icon"></i>Quản lý danh mục </a>
 						</li>
-						<!--<li>
-							<a [routerLink]="['/ad-import-invoice']" routerLinkActive="router-link-active"><i class="fa fa-envelope nav_icon"></i>Quản lý hóa đơn nhập<span class="fa arrow"></span></a>
-							<ul class="nav nav-second-level collapse">
-								<li>
-									<a href="inbox.html">Inbox <span class="nav-badge-btm">05</span></a>
-								</li>
-								<li>
-									<a href="compose.html">Compose email</a>
-								</li>
-							</ul>
-							 //nav-second-level 
-						</li> 
-						<li>
-							<a href="tables.html"><i class="fa fa-table nav_icon"></i>Tables <span class="nav-badge">05</span></a>
-						</li>
-						<li>
-							<a href="#"><i class="fa fa-check-square-o nav_icon"></i>Forms<span class="fa arrow"></span></a>
-							<ul class="nav nav-second-level collapse">
-								<li>
-									<a href="forms.html">Basic Forms <span class="nav-badge-btm">07</span></a>
-								</li>
-								<li>
-									<a href="validation.html">Validation</a>
-								</li>
-							</ul>
-							 //nav-second-level -->
-						<!-- </li>
-						<li>
-							<a href="#"><i class="fa fa-file-text-o nav_icon"></i>Pages<span class="nav-badge-btm">02</span><span class="fa arrow"></span></a>
-							<ul class="nav nav-second-level collapse">
-								<li>
-									<a href="login.html">Login</a>
-								</li>
-								<li>
-									<a href="signup.html">SignUp</a>
-								</li>
-								<li>
-									<a href="blank-page.html">Blank Page</a>
-								</li>
-							</ul> -->
-						<!-- //nav-second-level -->
-						<!-- </li>
-						<li>
-							<a href="charts.html" class="chart-nav"><i class="fa fa-bar-chart nav_icon"></i>Charts <span class="nav-badge-btm pull-right">new</span></a>
-						</li> -->
 					</ul>
-					<!-- //sidebar-collapse -->
 				</nav>
 			</div>
 		</div>
-		<!--left-fixed -navigation-->
-		<!-- header-starts -->
 		<div class="sticky-header header-section ">
 			<div class="header-left">
 				<!--toggle button start-->
@@ -303,15 +240,15 @@
 							<thead>
 								<tr>
 									<th style="width:10%">Tiêu đề</th>
-									<th style="width:10%">Loại tin</th>
-									<th style="width:10%">Tg post</th>
+									<th style="width:5%">Loại tin</th>
+									<th style="width:5%">Tg post</th>
 									<th style="width:10%">Tác vụ</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr *ngFor="let item of items">
 									<td>{{item.title}}</td>
-									<td>{{item.newtypeId}}</td>
+									<td>{{item.newtype.newstypeName}}</td>
 									<td>{{item.postTime}}</td>
 									<td>
 										<button class="btn btn-info" (click)="showDetail(item.id)"><i class="fa fa-eye"

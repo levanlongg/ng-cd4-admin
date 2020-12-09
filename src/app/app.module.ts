@@ -8,7 +8,6 @@ import { AdProductModule } from './ad-product/ad-product.module';
 import { Er404Component } from './er404/er404.component';
 import { AdProductTypeModule } from './ad-product-type/ad-product-type.module';
 import { SharedModule } from './shared/shared.module';
-import { AdHomeComponent } from './ad-home/ad-home.component';
 import { AdImportInvoiceModule } from './ad-import-invoice/ad-import-invoice.module';
 import { AdProducerModule } from './ad-producer/ad-producer.module';
 import { AdUserModule } from './ad-user/ad-user.module';
@@ -22,7 +21,8 @@ import { AdRevenueStatisticsModule } from './ad-revenue-statistics/ad-revenue-st
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { LoginModule } from './login/login.module';
-
+import { DashboardModule } from './dashboard/dashboard.module';
+//import { MatSliderModule } from '@angular/material/slider';
 
 const routes: Routes = [
   {
@@ -78,8 +78,12 @@ const routes: Routes = [
     loadChildren: () => import('./login/login.module').then(m => m.LoginModule)  
   },
   {
+    path: 'dashboard',
+    loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)  
+  },
+  {
     path: '',
-    redirectTo: '/ad-product',
+    redirectTo: '/dashboard',
     pathMatch: 'full',
   },
   { path: '**', component:Er404Component}
@@ -88,7 +92,6 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     Er404Component,
-    AdHomeComponent,
     
   ],
   imports: [
@@ -108,6 +111,7 @@ const routes: Routes = [
     AdNewsTypeModule,
     AdProductTypeModule,
     AdImportInvoiceModule,
+    DashboardModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
     HttpClientModule,

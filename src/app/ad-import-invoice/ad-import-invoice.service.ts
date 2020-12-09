@@ -11,7 +11,7 @@ const HttpOptionss = {
 })
 export class AdImportInvoiceService {
 
-  public urlAPI = "https://localhost:44380/api/ImportInvoices";
+  public urlAPI = "https://localhost:44338/api/ImportInvoices";
   constructor(private _http: HttpClient) { }
 
   getList(): Observable<any[]> {
