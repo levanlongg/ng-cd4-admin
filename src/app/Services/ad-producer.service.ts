@@ -9,9 +9,9 @@ const HttpOptionss = {
 @Injectable({
   providedIn: 'root'
 })
-export class AdProductTypeService {
+export class AdProducerService {
 
-  public urlAPI = "https://localhost:44338/api/ProductTypes";
+  public urlAPI = "https://localhost:44338/api/Producers";
   constructor(private _http: HttpClient) { }
 
   getList(): Observable<any[]> {
@@ -19,6 +19,7 @@ export class AdProductTypeService {
       return res;
     }));
   }
+  
   postItme(data: any): Observable<any> {
     //debugger;
     return this._http.post<any>(this.urlAPI, data, HttpOptionss).pipe(map(res => {
@@ -30,10 +31,7 @@ export class AdProductTypeService {
       return res;
     }));
   }
-  
-//   editItem(id: any, data: any): Observable<any> {
-//     return this._http.put(this.urlAPI + id, data).pipe(map((res: Response) => res.json()))
-// }
+
   editItem(id: string, data: any): Observable<any> {
     //debugger;
     return this._http.put(this.urlAPI + "/" + id, data,HttpOptionss).pipe(map(res => {
@@ -47,12 +45,10 @@ export class AdProductTypeService {
     }));
   }
   Search(keyword: string): Observable<any[]> {
-    return this._http.get<any>(this.urlAPI + "?search=" + keyword).pipe(map(res=>{
+    return this._http.get<any>(this.urlAPI +"/"+ "search" +"/"+ keyword).pipe(map(res => {
       return res;
-    }))
- }
-  findByTitle(title): Observable<any> {
-    return this._http.get(`${this.urlAPI}?title=${title}`);
+    }));
   }
   
 }
+

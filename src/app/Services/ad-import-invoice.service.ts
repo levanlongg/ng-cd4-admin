@@ -9,9 +9,9 @@ const HttpOptionss = {
 @Injectable({
   providedIn: 'root'
 })
-export class AdCaculativePointsService {
+export class AdImportInvoiceService {
 
-  public urlAPI = "https://localhost:44380/api/CumulativePoints";
+  public urlAPI = "https://localhost:44338/api/ImportInvoices";
   constructor(private _http: HttpClient) { }
 
   getList(): Observable<any[]> {
@@ -30,9 +30,6 @@ export class AdCaculativePointsService {
       return res;
     }));
   }
-//   editItem(id: any, data: any): Observable<any> {
-//     return this._http.put(this.urlAPI + id, data).pipe(map((res: Response) => res.json()))
-// }
   editItem(id: string, data: any): Observable<any> {
     //debugger;
     return this._http.put(this.urlAPI + "/" + id, data,HttpOptionss).pipe(map(res => {
@@ -46,13 +43,9 @@ export class AdCaculativePointsService {
     }));
   }
   Search(keyword: string): Observable<any[]> {
-    return this._http.get<any>(this.urlAPI + "?search=" + keyword).pipe(map(res=>{
+    return this._http.get<any>(this.urlAPI +"/"+ "search" +"/"+ keyword).pipe(map(res => {
       return res;
-    }))
- }
-  findByTitle(title): Observable<any> {
-    return this._http.get(`${this.urlAPI}?title=${title}`);
+    }));
   }
   
 }
-

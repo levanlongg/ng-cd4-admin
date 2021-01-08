@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { AdNewsTypeService } from './ad-news-type.service';
+import { AdNewsTypeService } from '../Services/ad-news-type.service';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { NgForm } from '@angular/forms';
 @Component({
@@ -12,21 +12,29 @@ export class AdNewsTypeComponent implements OnInit {
 
   @ViewChild('editAndADD', { static: false }) editAndADD: ModalDirective;
   @ViewChild('editAndADD1', { static: false }) editAndADD1: ModalDirective;
+  @ViewChild('modalAddEdit') public modalAddEdit: ModalDirective;
 
-  constructor(private typenewService: AdNewsTypeService) {}
-
+  public pageIndex: number = 1;
+  public pageSize: number = 20;
+  public pageDisplay: number = 10;
+  public totalRow: number;
+  public filter: string = '';
+  public items: any[];
+  //public users: any[];
+  //public entity: any;
   public entity: any;
   public entity1: any;
-  public items: any[];
+  //public items: any[];
   public id: string;
   public checkedid: any;
   public keyword: string;
+  constructor(private typenewService: AdNewsTypeService) {}
   ngOnInit(): void {
-    this.typenewService.getList().subscribe((res: any)=>{
+    // this.typenewService.getList().subscribe((res: any)=>{
 
-      this.items = res;
-      console.log(this.items);
-    });
+    //   this.items = res;
+    //   console.log(this.items);
+    // });
     this.loadData();
   }
   loadData() {

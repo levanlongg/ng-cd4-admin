@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
-import { DashboardService } from './dashboard.service';
+import { DashboardService } from '../Services/dashboard.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -13,7 +16,7 @@ export class DashboardComponent implements OnInit {
 
   @ViewChild('editAndADD', { static: false }) editAndADD: ModalDirective;
   @ViewChild('editAndADD1', { static: false }) editAndADD1: ModalDirective;
-  constructor(private producttypeService: DashboardService) {}
+  constructor(private producttypeService: DashboardService, private jwtHelper: JwtHelperService, private router: Router) {}
   
 
   public entity: any;
@@ -102,4 +105,18 @@ export class DashboardComponent implements OnInit {
       }
     );
   }
+
+  isUserAuthenticated() {
+    const token: string = localStorage.getItem("jwt");
+    if (token && !this.jwtHelper.isTokenExpired(token)) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+  public logOut = () => {
+    localStorage.removeItem("jwt");
+  }
+
 }

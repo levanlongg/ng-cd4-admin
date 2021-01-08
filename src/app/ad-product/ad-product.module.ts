@@ -2,8 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdProductComponent } from './ad-product.component';
 import { RouterModule, Routes } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 
@@ -18,8 +21,11 @@ const routes: Routes = [
   declarations: [AdProductComponent],
   imports: [
     CommonModule,
-
+    CKEditorModule,
+    ReactiveFormsModule,
     FormsModule,
+    Ng2SearchPipeModule,
+    PaginationModule.forRoot(),
     ModalModule.forRoot(),
     RouterModule.forChild(routes),
   ]

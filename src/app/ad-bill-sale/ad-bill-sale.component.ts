@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
-import { AdBillSaleService } from '../ad-bill-sale/ad-bill-sale.service';
+import { AdBillSaleService } from '../Services/ad-bill-sale.service';
 
 @Component({
   selector: 'app-ad-bill-sale',
@@ -14,7 +14,7 @@ export class AdBillSaleComponent implements OnInit {
   @ViewChild('editAndADD', { static: false }) editAndADD: ModalDirective;
   @ViewChild('editAndADD1', { static: false }) editAndADD1: ModalDirective;
 
-  constructor(private typenewService: AdBillSaleService) {}
+  constructor(private BillSale: AdBillSaleService) {}
 
   public entity: any;
   public entity1: any;
@@ -23,15 +23,15 @@ export class AdBillSaleComponent implements OnInit {
   public checkedid: any;
   public keyword: string;
   ngOnInit(): void {
-    this.typenewService.getList().subscribe((res: any)=>{
+    // this.BillSale.getList().subscribe((res: any)=>{
 
-      this.items = res;
-      console.log(this.items);
-    });
+    //   this.items = res;
+    //   console.log(this.items);
+    // });
     this.loadData();
   }
   loadData() {
-    this.typenewService.getList().subscribe((res: any) => {
+    this.BillSale.getList().subscribe((res: any) => {
       this.items = res;
       console.log(this.items);
     });
@@ -44,7 +44,7 @@ export class AdBillSaleComponent implements OnInit {
   showEdit(id: any) {
     debugger;
     this.checkedid = 1;
-    this.typenewService.GetSingle(id).subscribe((res) => {
+    this.BillSale.GetSingle(id).subscribe((res) => {
       this.entity = res;
     });
     this.editAndADD.show();
@@ -52,14 +52,16 @@ export class AdBillSaleComponent implements OnInit {
   showDetail(id: any) {
     debugger;
     this.checkedid = 1;
-    this.typenewService.GetSingle(id).subscribe((res) => {
+    this.BillSale.GetSingle(id).subscribe((res) => {
       this.entity1 = res;
     });
     this.editAndADD1.show();
   }
+ 
+  
   SaveForm(values: any) {
     if (this.checkedid == 0) {
-      this.typenewService.postItme(values).subscribe((res) => {
+      this.BillSale.postItme(values).subscribe((res) => {
         if (res) {
           alert('Do you want add this item?');
           this.loadData();
@@ -69,7 +71,7 @@ export class AdBillSaleComponent implements OnInit {
     } else {
       this.id = values.id;
       console.log(values.id);
-      this.typenewService.editItem(this.id, values).subscribe((res) => {
+      this.BillSale.editItem(this.id, values).subscribe((res) => {
         alert('Are you sure edit this item?');
         this.loadData();
         this.editAndADD.hide();
@@ -78,33 +80,19 @@ export class AdBillSaleComponent implements OnInit {
   }
   deleteShow(id: string) {
     if (confirm('Are you sure delete this item?')) {
-      this.typenewService.deleteItem(id).subscribe((res) => {
+      this.BillSale.deleteItem(id).subscribe((res) => {
         this.loadData();
       });
     }
   }
-  // Search() {
-  //   this.typenewService.Search(this.keyword).subscribe(
-  //     (response: any) => {
-  //       this.employees = response;
-  //       console.log(response);
-  //     },
-  //     (error) => {
-  //       console.log(error);
-  //     }
-  //   );
-  // }
 
-  searchTitle(): void {
-    this.typenewService.findByTitle(this.title).subscribe(
-      (data) => {
-        this.tutorials = data;
-        console.log(data);
-      },
-      (error) => {
+  Search() {
+    this.BillSale.Search(this.keyword).subscribe((response: any) => {
+        this. items= response;
+        console.log(response);
+    }, error => {
         console.log(error);
-      }
-    );
+    });
   }
 }
 

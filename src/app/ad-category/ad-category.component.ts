@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
-import { AdCategoryService } from './ad-category.service';
+import { AdCategoryService } from '../Services/ad-category.service';
 
 @Component({
   selector: 'app-ad-category',
@@ -12,35 +12,35 @@ export class AdCategoryComponent implements OnInit {
   [x: string]: any;
 
   @ViewChild('editAndADD', { static: false }) editAndADD: ModalDirective;
-  @ViewChild('editAndADD1', { static: false }) editAndADD1: ModalDirective;
-
   constructor(private typenewService: AdCategoryService) {}
 
   public entity: any;
-  public entity1: any;
   public items: any[];
   public id: string;
   public checkedid: any;
   public keyword: string;
   ngOnInit(): void {
-    this.typenewService.getList().subscribe((res: any)=>{
+    // this.typenewService.getList().subscribe((res: any)=>{
 
-      this.items = res;
-      console.log(this.items);
-    });
+    //   this.items = res;
+    //   console.log(this.items);
+    // });
     this.loadData();
   }
+
   loadData() {
     this.typenewService.getList().subscribe((res: any) => {
       this.items = res;
       console.log(this.items);
     });
   }
+
   showAdd() {
     this.entity = {};
     this.checkedid = 0;
     this.editAndADD.show();
   }
+
   showEdit(id: any) {
     debugger;
     this.checkedid = 1;
@@ -49,6 +49,7 @@ export class AdCategoryComponent implements OnInit {
     });
     this.editAndADD.show();
   }
+
   showDetail(id: any) {
     debugger;
     this.checkedid = 1;
@@ -57,6 +58,7 @@ export class AdCategoryComponent implements OnInit {
     });
     this.editAndADD1.show();
   }
+
   SaveForm(values: any) {
     if (this.checkedid == 0) {
       this.typenewService.postItme(values).subscribe((res) => {
@@ -76,6 +78,7 @@ export class AdCategoryComponent implements OnInit {
       });
     }
   }
+  
   deleteShow(id: string) {
     if (confirm('Are you sure delete this item?')) {
       this.typenewService.deleteItem(id).subscribe((res) => {

@@ -1,5 +1,5 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHandler, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -9,9 +9,9 @@ const HttpOptionss = {
 @Injectable({
   providedIn: 'root'
 })
-export class AdProducerService {
+export class AdUserService {
 
-  public urlAPI = "https://localhost:44338/api/Producers";
+  public urlAPI = "https://localhost:44338/api/Dbusers";
   constructor(private _http: HttpClient) { }
 
   getList(): Observable<any[]> {
@@ -19,13 +19,14 @@ export class AdProducerService {
       return res;
     }));
   }
-  
+
   postItme(data: any): Observable<any> {
     //debugger;
     return this._http.post<any>(this.urlAPI, data, HttpOptionss).pipe(map(res => {
       return res;
     }));
   }
+
   GetSingle(id: any): Observable<any> {
     return this._http.get<any>(this.urlAPI + "/" + id).pipe(map(res => {
       return res;
@@ -38,20 +39,18 @@ export class AdProducerService {
       return res;
     }));
   }
+
   deleteItem(id: string): Observable<any> {
     debugger;
     return this._http.delete<any>(this.urlAPI + "/" + id,HttpOptionss).pipe(map(res => {
       return res;
     }));
   }
+
   Search(keyword: string): Observable<any[]> {
-    return this._http.get<any>(this.urlAPI + "?search=" + keyword).pipe(map(res=>{
+    return this._http.get<any>(this.urlAPI +"/"+ "search" +"/"+ keyword).pipe(map(res => {
       return res;
-    }))
- }
-  findByTitle(title): Observable<any> {
-    return this._http.get(`${this.urlAPI}?title=${title}`);
+    }));
   }
   
 }
-

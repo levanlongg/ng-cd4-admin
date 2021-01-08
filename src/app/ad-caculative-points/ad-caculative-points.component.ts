@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
-import { AdCaculativePointsService } from '../ad-caculative-points/ad-caculative-points.service';
+import { AdCaculativePointsService } from '../Services/ad-caculative-points.service';
 
 @Component({
   selector: 'app-ad-caculative-points',

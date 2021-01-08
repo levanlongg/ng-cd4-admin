@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
-import { AdImportInvoiceService } from '../ad-import-invoice/ad-import-invoice.service';
+import { AdImportInvoiceService } from '../Services/ad-import-invoice.service';
 
 @Component({
   selector: 'app-ad-import-invoice',
@@ -83,28 +83,13 @@ export class AdImportInvoiceComponent implements OnInit {
       });
     }
   }
-  // Search() {
-  //   this.typenewService.Search(this.keyword).subscribe(
-  //     (response: any) => {
-  //       this.employees = response;
-  //       console.log(response);
-  //     },
-  //     (error) => {
-  //       console.log(error);
-  //     }
-  //   );
-  // }
-
-  searchTitle(): void {
-    this.typenewService.findByTitle(this.title).subscribe(
-      (data) => {
-        this.tutorials = data;
-        console.log(data);
-      },
-      (error) => {
+  Search() {
+    this.typenewService.Search(this.keyword).subscribe((response: any) => {
+        this. items= response;
+        console.log(response);
+    }, error => {
         console.log(error);
-      }
-    );
+    });
   }
 }
 

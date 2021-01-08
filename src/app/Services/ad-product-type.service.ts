@@ -1,5 +1,5 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHandler, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -9,9 +9,9 @@ const HttpOptionss = {
 @Injectable({
   providedIn: 'root'
 })
-export class AdUserService {
+export class AdProductTypeService {
 
-  public urlAPI = "https://localhost:44380/api/Dbusers";
+  public urlAPI = "https://localhost:44338/api/ProductTypes";
   constructor(private _http: HttpClient) { }
 
   getList(): Observable<any[]> {
@@ -30,6 +30,7 @@ export class AdUserService {
       return res;
     }));
   }
+  
 //   editItem(id: any, data: any): Observable<any> {
 //     return this._http.put(this.urlAPI + id, data).pipe(map((res: Response) => res.json()))
 // }
@@ -45,11 +46,12 @@ export class AdUserService {
       return res;
     }));
   }
+  
   Search(keyword: string): Observable<any[]> {
-    return this._http.get<any>(this.urlAPI + "?search=" + keyword).pipe(map(res=>{
+    return this._http.get<any>(this.urlAPI +"/"+ "search" +"/"+ keyword).pipe(map(res => {
       return res;
-    }))
- }
+    }));
+  }
   findByTitle(title): Observable<any> {
     return this._http.get(`${this.urlAPI}?title=${title}`);
   }

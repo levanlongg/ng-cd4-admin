@@ -27,4 +27,6 @@ public renderExternalScript(src: string): HTMLScriptElement {
     this._renderer.appendChild(document.body, script);
     return script;
   }
+
+  
 }

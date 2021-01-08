@@ -1,397 +1,243 @@
-<p>ad-user works!</p>
-
-<body class="cbp-spmenu-push">
-	<div class="main-content">
-		<!--left-fixed -navigation-->
-		<div class=" sidebar" role="navigation">
-			<div class="navbar-collapse">
-				<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
-					<ul class="nav" id="side-menu">
-						<li>
-							<a [routerLink]="['/dashboard']" routerLinkActive="router-link-active" class="active"><i
-									class="fa fa-home nav_icon"></i>Dashboard</a>
-						</li>
-						<li>
-							<a [routerLink]="['/ad-news']" routerLinkActive="router-link-active"><i
-									class="fa fa-cogs nav_icon"></i>Quản lý tin tức
-								</a>
-						</li>
-						<li>
-							<a [routerLink]="['/ad-news-type']" routerLinkActive="router-link-active"><i
-									class="fa fa-book nav_icon"></i>Quản lý loại tin
-									</a>
-						</li>
-						<li>
-							<a [routerLink]="['/ad-category']" routerLinkActive="router-link-active"><i
-									class="fa fa-th-large nav_icon"></i>Quản lý danh mục </a>
-						</li>
-					</ul>
-				</nav>
+<div id="wrapper">
+	<div id="page-wrapper" class="gray-bg dashbard-1">
+		<div class="content-main">
+			<!--banner-->
+			<div class="banner">
+				<h2>
+					<a href="index.html">Home</a>
+					<i class="fa fa-angle-right"></i>
+					<span>News</span>
+				</h2>
 			</div>
-		</div>
-		<div class="sticky-header header-section ">
-			<div class="header-left">
-				<!--toggle button start-->
-				<button id="showLeftPush"><i class="fa fa-bars"></i></button>
-				<!--toggle button end-->
-				<!--logo -->
-				<div class="logo">
-					<a href="index.html">
-						<h1>NOVUS</h1>
-						<span>AdminPanel</span>
-					</a>
+			<!--//banner-->
+			<!--content-->
+			<div class="content-top">
+				<div class="col-md-12 ">
+					<div class="content-top-1">
+						<div>
+							<h3>Quản lý tin tức</h3><br />
+							<button style="margin-bottom:1%;" class="btn btn-success" (click)="showAdd()">Thêm
+								+</button><br/>
+							
+								<input style="width:30%" placeholder="Tìm kiếm" type="text" [(ngModel)]="keyword" name="keyword" />
+								<button (click)="Search()">Tìm kiếm</button>
+								<!-- <button style="margin-bottom:1%;" class="btn btn-success" (click)="loadData()">Hien
+									+</button> -->
+							<table style="margin-top:3%;" class="table table-bordered">
+								<thead>
+									<tr>
+										<th style="width:10%">Tiêu đề</th>
+										<th style="width:5%">Loại tin</th>
+										<th style="width:5%">Tg post</th>
+										<th style="width:10%">Tác vụ</th>
+									</tr>
+								</thead>
+								<tbody>
+									<!-- <tr *ngFor="let item of items | paginate: { id: listing_pagination, itemsPerpage:3, currentPage: page, totalItems: totalRecords }"> -->
+									<tr *ngFor="let item of items">	
+										<td>{{item.title}}</td>
+										<td>{{item.newtype.newstypeName}}</td>
+										<td>{{item.postTime}}</td>
+										<td>
+											<button style="margin-left: 2%;" class="btn btn-info"><i class="fa fa-eye"
+													aria-hidden="true" (click)="showDetail(item.id)"></i></button>
+											<button style="margin-left: 2%;" class="btn btn-success"
+												(click)="showEdit(item.id)"><i class="fa fa-pencil"
+													aria-hidden="true"></i></button>
+											<button style="margin-left: 2%;" class="btn btn-danger"
+												(click)="deleteShow(item.id)"><i class="fa fa-trash-o"
+													aria-hidden="true"></i></button>
+										</td>
+										
+									</tr>
+									<!-- <pagination-controls id="listing_pagination" maxSize="5" directionLink="true" (pageChange)="page=$event"></pagination-controls> -->
+								</tbody>
+							</table>
+							<!-- <pagination [totalItems]="30"></pagination> -->
+						</div>
+						
+						<div class="clearfix"> </div>
+					</div>
 				</div>
-				<!--//logo-->
-				<!--search-box-->
-				<div class="search-box">
-					<form class="input">
-						<input class="sb-search-input input__field--madoka" placeholder="Search..." type="search"
-							id="input-31" />
-						<label class="input__label" for="input-31">
-							<svg class="graphic" width="100%" height="100%" viewBox="0 0 404 77"
-								preserveAspectRatio="none">
-								<path d="m0,0l404,0l0,77l-404,0l0,-77z" />
-							</svg>
-						</label>
-					</form>
-				</div>
-				<!--//end-search-box-->
 				<div class="clearfix"> </div>
 			</div>
-			<div class="header-right">
-				<div class="profile_details_left">
-					<!--notifications of menu start -->
-					<ul class="nofitications-dropdown">
-						<li class="dropdown head-dpdn">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i
-									class="fa fa-envelope"></i><span class="badge">3</span></a>
-							<ul class="dropdown-menu">
-								<li>
-									<div class="notification_header">
-										<h3>You have 3 new messages</h3>
+			<div bsModal #editAndADD="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+				aria-labelledby="dialog-sizes-name1">
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+						<form #newTypeForm="ngForm" (ngSubmit)="SaveForm(newTypeForm.value)" *ngIf="entity">
+							<h4 id="dialog-sizes-name1" class="modal-title pull-left">Quản lý tin tức</h4>
+							<div class="modal-header">
+								<button type="button" class="close pull-right" (click)="editAndADD.hide()"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<div class="row">
+									<div class="col-md-4">
+										<label for="id">Id tin tức:</label>
+										<input type="hidden" [(ngModel)]="checkedid">
+										<input type="text" class="form-control" value="" name="id"
+											[(ngModel)]="entity.id">
 									</div>
-								</li>
-								<li><a href="#">
-										<div class="user_img"><img src="./assets/images/1.png" alt=""></div>
-										<div class="notification_desc">
-											<p>Lorem ipsum dolor amet</p>
-											<p><span>1 hour ago</span></p>
-										</div>
-										<div class="clearfix"></div>
-									</a></li>
-								<li class="odd"><a href="#">
-										<div class="user_img"><img src="./assets/images/2.png" alt=""></div>
-										<div class="notification_desc">
-											<p>Lorem ipsum dolor amet </p>
-											<p><span>1 hour ago</span></p>
-										</div>
-										<div class="clearfix"></div>
-									</a></li>
-								<li><a href="#">
-										<div class="user_img"><img src="./assets/images/3.png" alt=""></div>
-										<div class="notification_desc">
-											<p>Lorem ipsum dolor amet </p>
-											<p><span>1 hour ago</span></p>
-										</div>
-										<div class="clearfix"></div>
-									</a></li>
-								<li>
-									<div class="notification_bottom">
-										<a href="#">See all messages</a>
+									<div class="col-md-4">
+										<label for="newtypeId">Id loại tin:</label>
+										<input type="text" class="form-control" value="" name="newtypeId"
+											[(ngModel)]="entity.newtypeId">
 									</div>
-								</li>
-							</ul>
-						</li>
-						<li class="dropdown head-dpdn">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i
-									class="fa fa-bell"></i><span class="badge blue">3</span></a>
-							<ul class="dropdown-menu">
-								<li>
-									<div class="notification_header">
-										<h3>You have 3 new notification</h3>
+									<div class="col-md-4">
+										<label for="postTime">Thời gian đăng:</label>
+										<input type="datetime-local" class="form-control" value="" name="postTime"
+											[(ngModel)]="entity.postTime">
 									</div>
-								</li>
-								<li><a href="#">
-										<div class="user_img"><img src="./assets/images/2.png" alt=""></div>
-										<div class="notification_desc">
-											<p>Lorem ipsum dolor amet</p>
-											<p><span>1 hour ago</span></p>
-										</div>
-										<div class="clearfix"></div>
-									</a></li>
-								<li class="odd"><a href="#">
-										<div class="user_img"><img src="./assets/images/1.png" alt=""></div>
-										<div class="notification_desc">
-											<p>Lorem ipsum dolor amet </p>
-											<p><span>1 hour ago</span></p>
-										</div>
-										<div class="clearfix"></div>
-									</a></li>
-								<li><a href="#">
-										<div class="user_img"><img src="./assets/images/3.png" alt=""></div>
-										<div class="notification_desc">
-											<p>Lorem ipsum dolor amet </p>
-											<p><span>1 hour ago</span></p>
-										</div>
-										<div class="clearfix"></div>
-									</a></li>
-								<li>
-									<div class="notification_bottom">
-										<a href="#">See all notifications</a>
-									</div>
-								</li>
-							</ul>
-						</li>
-						<li class="dropdown head-dpdn">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i
-									class="fa fa-tasks"></i><span class="badge blue1">15</span></a>
-							<ul class="dropdown-menu">
-								<li>
-									<div class="notification_header">
-										<h3>You have 8 pending task</h3>
-									</div>
-								</li>
-								<li><a href="#">
-										<div class="task-info">
-											<span class="task-desc">Database update</span><span
-												class="percentage">40%</span>
-											<div class="clearfix"></div>
-										</div>
-										<div class="progress progress-striped active">
-											<div class="bar yellow" style="width:40%;"></div>
-										</div>
-									</a></li>
-								<li><a href="#">
-										<div class="task-info">
-											<span class="task-desc">Dashboard done</span><span
-												class="percentage">90%</span>
-											<div class="clearfix"></div>
-										</div>
-										<div class="progress progress-striped active">
-											<div class="bar green" style="width:90%;"></div>
-										</div>
-									</a></li>
-								<li><a href="#">
-										<div class="task-info">
-											<span class="task-desc">Mobile App</span><span class="percentage">33%</span>
-											<div class="clearfix"></div>
-										</div>
-										<div class="progress progress-striped active">
-											<div class="bar red" style="width: 33%;"></div>
-										</div>
-									</a></li>
-								<li><a href="#">
-										<div class="task-info">
-											<span class="task-desc">Issues fixed</span><span
-												class="percentage">80%</span>
-											<div class="clearfix"></div>
-										</div>
-										<div class="progress progress-striped active">
-											<div class="bar  blue" style="width: 80%;"></div>
-										</div>
-									</a></li>
-								<li>
-									<div class="notification_bottom">
-										<a href="#">See all pending tasks</a>
-									</div>
-								</li>
-							</ul>
-						</li>
-					</ul>
-					<div class="clearfix"> </div>
-				</div>
-				<!--notification menu end -->
-				<div class="profile_details">
-					<ul>
-						<li class="dropdown profile_details_drop">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-								<div class="profile_img">
-									<span class="prfil-img"><img src="./assets/images/a.png" alt=""> </span>
-									<div class="user-name">
-										<p>Wikolia</p>
-										<span>Administrator</span>
-									</div>
-									<i class="fa fa-angle-down lnr"></i>
-									<i class="fa fa-angle-up lnr"></i>
-									<div class="clearfix"></div>
 								</div>
-							</a>
-							<ul class="dropdown-menu drp-mnu">
-								<li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li>
-								<li> <a href="#"><i class="fa fa-user"></i> Profile</a> </li>
-								<li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
-							</ul>
-						</li>
-					</ul>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-			<div class="clearfix"> </div>
-		</div>
-		<!-- //header-ends -->
-		<!-- main content start-->
-		<div id="page-wrapper">
-			<div class="main-page">
-				<div class="container">
-					<h3>Quản lý tin tức</h3><br />
-					<button class="btn btn-success" (click)="showAdd()">Thêm +</button>
-					<div>
-						<table class="table table-bordered">
-							<thead>
-								<tr>
-									<th style="width:10%">Tiêu đề</th>
-									<th style="width:5%">Loại tin</th>
-									<th style="width:5%">Tg post</th>
-									<th style="width:10%">Tác vụ</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr *ngFor="let item of items">
-									<td>{{item.title}}</td>
-									<td>{{item.newtype.newstypeName}}</td>
-									<td>{{item.postTime}}</td>
-									<td>
-										<button class="btn btn-info" (click)="showDetail(item.id)"><i class="fa fa-eye"
-												aria-hidden="true"></i></button>
-										<button class="btn btn-success" (click)="showEdit(item.id)"><i
-												class="fa fa-pencil" aria-hidden="true"></i></button>
-										<button class="btn btn-danger" (click)="deleteShow(item.id)"><i
-												class="fa fa-trash-o" aria-hidden="true"></i></button>
-									</td>
-								</tr>
-							</tbody>
-						</table>
+								<div class="row">
+									<div class="col-md-12">
+										<label for="logo">Hình ảnh:</label>
+										<div class="row" style="margin-bottom:15px;">
+											<div class="col-md-3">
+											  <input type="file" #file (change)="uploadFile(file.files)" style="display:none;" (onUploadFinished)="uploadFinished($event)" name="image" [(ngModel)]="entity.image">
+											  <button type="button" class="btn btn-success" (click)="file.click()">Upload File</button>
+											</div>
+											<div class="col-md-9">
+											  <span class="upload" *ngIf="progress > 0">
+												{{progress}}%
+											  </span>
+											  <span class="upload" *ngIf="message">
+												{{message}}
+											  </span>
+											</div>
+										  </div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<label for="title">Tiêu đề tin:</label>
+										<input type="hidden" [(ngModel)]="checkedid">
+										<input type="text" class="form-control" value="" name="title"
+											[(ngModel)]="entity.title">
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<label for="content">Mô tả:</label>
+										<input type="hidden" [(ngModel)]="checkedid">
+										<ckeditor [editor]="Editor" data="Mô tả chi tiết" name="description" [(ngModel)]="entity.description" ></ckeditor>
+										<!-- <input type="text" class="form-control" value="" name="content"
+											[(ngModel)]="entity.content"> -->
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<label for="content">Nội dung:</label>
+										<input type="hidden" [(ngModel)]="checkedid">
+										<ckeditor [editor]="Editor" data="Nội dung" name="newcontent" [(ngModel)]="entity.newcontent" ></ckeditor>
+										<!-- <input type="text" class="form-control" value="" name="newcontent"
+											[(ngModel)]="entity.newcontent"> -->
+									</div>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="submit" class="btn btn-default">Submit</button>
+								<button type="button" class="btn btn-default" (click)="editAndADD.hide()"
+									data-dismiss="modal">Close</button>
+							</div>
+						</form>
 					</div>
 				</div>
-				<div class="clearfix"> </div>
+			</div>
+			<div bsModal #editAndADD1="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+				aria-labelledby="dialog-sizes-name1">
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+						<form #newTypeForm="ngForm" (ngSubmit)="SaveForm(newTypeForm.value)" *ngIf="entity1">
+							<h4 id="dialog-sizes-name1" class="modal-title pull-left">Quản lý tin tức</h4>
+							<div class="modal-header">
+								<button type="button" class="close pull-right" (click)="editAndADD1.hide()"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<div class="row">
+									<div class="col-md-4">
+										<label for="id">Id tin tức:</label>
+										<input type="hidden" [(ngModel)]="checkedid">
+										<input type="text" class="form-control" value="" name="id"
+											[(ngModel)]="entity1.id">
+									</div>
+									<div class="col-md-4">
+										<label for="newtypeId">Id loại tin:</label>
+										<input type="text" class="form-control" value="" name="newtypeId"
+											[(ngModel)]="entity1.newtypeId">
+									</div>
+									<div class="col-md-4">
+										<label for="postTime">Thời gian đăng:</label>
+										<input type="datetime-local" class="form-control" value="" name="postTime"
+											[(ngModel)]="entity1.postTime">
+									</div>
+								</div>
+								<!-- <div class="row">
+									<div class="col-md-12">
+										<label for="logo">Hình ảnh:</label>
+										<div class="row" style="margin-bottom:15px;">
+											<div class="col-md-3">
+											  <input type="file" #file (change)="uploadFile(file.files)" style="display:none;" (onUploadFinished)="uploadFinished($event)" name="image" [(ngModel)]="entity.image">
+											  <button type="button" class="btn btn-success" (click)="file.click()">Upload File</button>
+											</div>
+											<div class="col-md-9">
+											  <span class="upload" *ngIf="progress > 0">
+												{{progress}}%
+											  </span>
+											  <span class="upload" *ngIf="message">
+												{{message}}
+											  </span>
+											</div>
+										  </div>
+									</div>
+								</div> -->
+								<div class="row">
+									<div class="col-md-12">
+										<label for="title">Tiêu đề tin:</label>
+										<input type="hidden" [(ngModel)]="checkedid">
+										<input type="text" class="form-control" value="" name="title"
+											[(ngModel)]="entity1.title">
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<label for="description">Mô tả:</label>
+										<input type="hidden" [(ngModel)]="checkedid">
+										<ckeditor [editor]="Editor" data="Mô tả chi tiết" name="description" [(ngModel)]="entity1.description" ></ckeditor>
+										<!-- <input type="text" class="form-control" value="" name="content"
+											[(ngModel)]="entity.content"> -->
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<label for="newcontent">Nội dung:</label>
+										<input type="hidden" [(ngModel)]="checkedid">
+										<ckeditor [editor]="Editor" data="Nội dung" name="newcontent" [(ngModel)]="entity1.newcontent" ></ckeditor>
+										<!-- <input type="text" class="form-control" value="" name="newcontent"
+											[(ngModel)]="entity.newcontent"> -->
+									</div>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="submit" class="btn btn-default">Submit</button>
+								<button type="button" class="btn btn-default" (click)="editAndADD1.hide()"
+									data-dismiss="modal">Close</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			
+			<div class="copy">
+				<p> &copy; 2020 Minimal. All Rights Reserved | Design by LeVanLong </p>
 			</div>
 		</div>
-		<!--footer-->
-		<!--//footer-->
+		<div class="clearfix"> </div>
 	</div>
-	<div bsModal #editAndADD="bs-modal" class="modal fade" tabindex="-1" role="dialog"
-		aria-labelledby="dialog-sizes-name1">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<form #newTypeForm="ngForm" (ngSubmit)="SaveForm(newTypeForm.value)" *ngIf="entity">
-					<div class="modal-header">
-						<h4 id="dialog-sizes-name1" class="modal-title pull-left">Quản lý tin tức</h4>
-						<button type="button" class="close pull-right" (click)="editAndADD.hide()" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<div class="row">
-							<div class="col-md-4">
-								<label for="id">Id tin tức:</label>
-								<input type="hidden" [(ngModel)]="checkedid">
-								<input type="text" class="form-control" value="" name="id" [(ngModel)]="entity.id">
-							</div>
-							<div class="col-md-4">
-								<label for="newtypeId">Id loại tin:</label>
-								<input type="text" class="form-control" value="" name="newtypeId" [(ngModel)]="entity.newtypeId">
-							</div>
-							<div class="col-md-4">
-								<label for="postTime">Thời gian đăng:</label>
-								<input type="text" class="form-control" value="" name="postTime" [(ngModel)]="entity.postTime">
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<label for="title">Tiêu đề tin:</label>
-								<input type="hidden" [(ngModel)]="checkedid">
-								<input type="text" class="form-control" value="" name="title" [(ngModel)]="entity.title">
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<label for="content">Mô tả:</label>
-								<input type="hidden" [(ngModel)]="checkedid">
-								<input type="text" class="form-control" value="" name="content" [(ngModel)]="entity.content">
-							</div>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="submit" class="btn btn-default">Submit</button>
-						<button type="button" class="btn btn-default" (click)="editAndADD.hide()"
-							data-dismiss="modal">Close</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	<div bsModal #editAndADD1="bs-modal" class="modal fade" tabindex="-1" role="dialog"
-		aria-labelledby="dialog-sizes-name1">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<form #newTypeForm="ngForm" (ngSubmit)="SaveForm(newTypeForm.value)" *ngIf="entity1">
-					<div class="modal-header">
-						<h4 id="dialog-sizes-name1" class="modal-title pull-left">Quản lý tin tức</h4>
-						<button type="button" class="close pull-right" (click)="editAndADD1.hide()" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<div class="row">
-							<div class="col-md-4">
-								<label for="id">Id tin tức:</label>
-								<input type="hidden" [(ngModel)]="checkedid">
-								<input type="text" class="form-control" value="" name="id" [(ngModel)]="entity1.id">
-							</div>
-							<div class="col-md-4">
-								<label for="newtypeId">Id loại tin:</label>
-								<input type="text" class="form-control" value="" name="newtypeId" [(ngModel)]="entity1.newtypeId">
-							</div>
-							<div class="col-md-4">
-								<label for="postTime">Thời gian đăng:</label>
-								<input type="text" class="form-control" value="" name="postTime" [(ngModel)]="entity1.postTime">
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<label for="title">Tiêu đề tin:</label>
-								<input type="hidden" [(ngModel)]="checkedid">
-								<input type="text" class="form-control" value="" name="title" [(ngModel)]="entity1.title">
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<label for="content">Mô tả:</label>
-								<input type="hidden" [(ngModel)]="checkedid">
-								<input type="text" class="form-control" value="" name="content" [(ngModel)]="entity1.content">
-							</div>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" (click)="editAndADD1.hide()"
-							data-dismiss="modal">Close</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	<!-- Classie -->
-	<style>
-		button {
-			margin-left: 1%;
-		}
-	</style>
-	<script>
-		var menuLeft = document.getElementById('cbp-spmenu-s1'),
-			showLeftPush = document.getElementById('showLeftPush'),
-			body = document.body;
-
-		showLeftPush.onclick = function () {
-			classie.toggle(this, 'active');
-			classie.toggle(body, 'cbp-spmenu-push-toright');
-			classie.toggle(menuLeft, 'cbp-spmenu-open');
-			disableOther('showLeftPush');
-		};
-
-
-		function disableOther(button) {
-			if (button !== 'showLeftPush') {
-				classie.toggle(showLeftPush, 'disabled');
-			}
-		}
-	</script>
+</div>

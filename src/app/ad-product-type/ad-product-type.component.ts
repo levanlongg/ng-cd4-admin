@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { from } from 'rxjs';
-import { AdProductTypeService} from './ad-product-type.service';
+import { AdProductTypeService} from '../Services/ad-product-type.service';
 
 @Component({
   selector: 'app-ad-product-type',
@@ -16,12 +16,16 @@ export class AdProductTypeComponent implements OnInit {
   constructor(private producttypeService: AdProductTypeService) {}
   
 
+  public progress: number;
+  public message: string;
   public entity: any;
   public entity1: any;
+  public filterTerm: string;
   public items: any[];
   public id: string;
   public checkedid: any;
   public keyword: string;
+
   ngOnInit(): void {
     this.loadData();
   }
@@ -79,27 +83,13 @@ export class AdProductTypeComponent implements OnInit {
       });
     }
   }
-  // Search() {
-  //   this.typenewService.Search(this.keyword).subscribe(
-  //     (response: any) => {
-  //       this.employees = response;
-  //       console.log(response);
-  //     },
-  //     (error) => {
-  //       console.log(error);
-  //     }
-  //   );
-  // }
-
-  searchTitle(): void {
-    this.producttypeService.findByTitle(this.title).subscribe(
-      (data) => {
-        this.tutorials = data;
-        console.log(data);
-      },
-      (error) => {
+  
+  Search() {
+    this.producttypeService.Search(this.keyword).subscribe((response: any) => {
+        this. items= response;
+        console.log(response);
+    }, error => {
         console.log(error);
-      }
-    );
+    });
   }
 }

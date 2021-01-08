@@ -9,9 +9,10 @@ const HttpOptionss = {
 @Injectable({
   providedIn: 'root'
 })
-export class AdNewsService {
+export class AdCaculativePointsService {
 
-  public urlAPI = "https://localhost:44338/api/News";
+  public urlAPI = "https://localhost:44338/api/CumulativePoints";
+  public urlAPI1 = "https://localhost:44338/api/CumulativePoints";
   constructor(private _http: HttpClient) { }
 
   getList(): Observable<any[]> {
@@ -19,26 +20,33 @@ export class AdNewsService {
       return res;
     }));
   }
+
+  getList1(): Observable<any[]> {
+    return this._http.get<any[]>(this.urlAPI1).pipe(map(res => {
+      return res;
+    }));
+  }
+
   postItme(data: any): Observable<any> {
     //debugger;
     return this._http.post<any>(this.urlAPI, data, HttpOptionss).pipe(map(res => {
       return res;
     }));
   }
+
   GetSingle(id: any): Observable<any> {
     return this._http.get<any>(this.urlAPI + "/" + id).pipe(map(res => {
       return res;
     }));
   }
-//   editItem(id: any, data: any): Observable<any> {
-//     return this._http.put(this.urlAPI + id, data).pipe(map((res: Response) => res.json()))
-// }
+
   editItem(id: string, data: any): Observable<any> {
     //debugger;
     return this._http.put(this.urlAPI + "/" + id, data,HttpOptionss).pipe(map(res => {
       return res;
     }));
   }
+
   deleteItem(id: string): Observable<any> {
     debugger;
     return this._http.delete<any>(this.urlAPI + "/" + id,HttpOptionss).pipe(map(res => {

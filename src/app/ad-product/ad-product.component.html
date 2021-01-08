@@ -1,188 +1,5 @@
+
 <div id="wrapper">
-	<nav class="navbar-default navbar-static-top" role="navigation">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<h1> <a class="navbar-brand" href="index.html">Minimal</a></h1>
-		</div>
-		<script src="js/jquery.flot.js"></script>
-		<div class=" border-bottom">
-			<div class="full-left">
-				<section class="full-top">
-					<button id="toggle"><i class="fa fa-arrows-alt"></i></button>
-				</section>
-				<form class=" navbar-left-right">
-					<input type="text" value="Search..." onfocus="this.value = '';"
-						onblur="if (this.value == '') {this.value = 'Search...';}">
-					<input type="submit" value="" class="fa fa-search">
-				</form>
-				<div class="clearfix"> </div>
-			</div>
-
-			<div class="drop-men">
-				<ul class=" nav_1">
-
-					<li class="dropdown at-drop">
-						<a href="#" class="dropdown-toggle dropdown-at " data-toggle="dropdown"><i
-								class="fa fa-globe"></i> <span class="number">5</span></a>
-						<ul class="dropdown-menu menu1 " role="menu">
-							<li><a href="#">
-
-									<div class="user-new">
-										<p>New user registered</p>
-										<span>40 seconds ago</span>
-									</div>
-									<div class="user-new-left">
-
-										<i class="fa fa-user-plus"></i>
-									</div>
-									<div class="clearfix"> </div>
-								</a></li>
-							<li><a href="#">
-									<div class="user-new">
-										<p>Someone special liked this</p>
-										<span>3 minutes ago</span>
-									</div>
-									<div class="user-new-left">
-
-										<i class="fa fa-heart"></i>
-									</div>
-									<div class="clearfix"> </div>
-								</a></li>
-							<li><a href="#">
-									<div class="user-new">
-										<p>John cancelled the event</p>
-										<span>4 hours ago</span>
-									</div>
-									<div class="user-new-left">
-										<i class="fa fa-times"></i>
-									</div>
-									<div class="clearfix"> </div>
-								</a></li>
-							<li><a href="#">
-									<div class="user-new">
-										<p>The server is status is stable</p>
-										<span>yesterday at 08:30am</span>
-									</div>
-									<div class="user-new-left">
-
-										<i class="fa fa-info"></i>
-									</div>
-									<div class="clearfix"> </div>
-								</a></li>
-							<li><a href="#">
-									<div class="user-new">
-										<p>New comments waiting approval</p>
-										<span>Last Week</span>
-									</div>
-									<div class="user-new-left">
-
-										<i class="fa fa-rss"></i>
-									</div>
-									<div class="clearfix"> </div>
-								</a></li>
-							<li><a href="#" class="view">View all messages</a></li>
-						</ul>
-					</li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle dropdown-at" data-toggle="dropdown"><span
-								class=" name-caret">Rackham<i class="caret"></i></span><img
-								src="./assets/images//wo.jpg"></a>
-						<ul class="dropdown-menu " role="menu">
-							<li><a href="profile.html"><i class="fa fa-user"></i>Edit Profile</a></li>
-							<li><a href="inbox.html"><i class="fa fa-envelope"></i>Inbox</a></li>
-							<li><a href="calendar.html"><i class="fa fa-calendar"></i>Calender</a></li>
-							<li><a href="inbox.html"><i class="fa fa-clipboard"></i>Tasks</a></li>
-						</ul>
-					</li>
-				</ul>
-			</div>
-			<div class="clearfix">
-
-			</div>
-
-			<div class="navbar-default sidebar" role="navigation">
-				<div class="sidebar-nav navbar-collapse">
-					<ul class="nav" id="side-menu">
-
-						<li>
-							<a [routerLink]="['/dashboard']" routerLinkActive="router-link-active"
-								class=" hvr-bounce-to-right"><i class="fa fa-dashboard nav_icon "></i><span
-									class="nav-label">Dashboards</span> </a>
-						</li>
-
-						<li>
-							<a class=" hvr-bounce-to-right"><i class="fa fa-indent nav_icon"></i> <span
-									class="nav-label">
-									Quản lý kho</span><span class="fa arrow"></span></a>
-							<ul class="nav nav-second-level">
-								<li><a [routerLink]="['/ad-product']" routerLinkActive="router-link-active"
-										class=" hvr-bounce-to-right"><i class="fa fa-file-text-o nav_icon"></i>Quản lý
-										sản phẩm</a></li>
-								<li><a [routerLink]="['/ad-product-type']" routerLinkActive="router-link-active"
-										class=" hvr-bounce-to-right"><i class="fa fa-file-text-o nav_icon"></i>Quản lý
-										loại sản phẩm</a></li>
-								<li><a [routerLink]="['/ad-producer']" routerLinkActive="router-link-active"
-										class=" hvr-bounce-to-right"><i class="fa fa-file-text-o nav_icon"></i>Quản lý
-										nhà sản xuất</a></li>
-								<li><a [routerLink]="['/ad-import-invoice']" routerLinkActive="router-link-active"
-										class=" hvr-bounce-to-right"><i class="fa fa-file-text-o nav_icon"></i>Quản lý
-										hóa đơn nhập</a></li>
-							</ul>
-						</li>
-						<li>
-							<a href="#" class=" hvr-bounce-to-right"><i class="fa fa-indent nav_icon"></i> <span
-									class="nav-label">Quản trị website</span><span class="fa arrow"></span></a>
-							<ul class="nav nav-second-level">
-								<li><a [routerLink]="['/ad-news']" routerLinkActive="router-link-active"
-										class=" hvr-bounce-to-right"><i class="fa fa-file-text-o nav_icon"></i>Quản lý
-										tin tức</a></li>
-								<li><a [routerLink]="['/ad-news-type']" routerLinkActive="router-link-active"
-										class=" hvr-bounce-to-right"><i class="fa fa-file-text-o nav_icon"></i>Quản lý
-										loại tin</a></li>
-								<li><a [routerLink]="['/ad-category']" routerLinkActive="router-link-active"
-										class=" hvr-bounce-to-right"><i class="fa fa-file-text-o nav_icon"></i>Quản lý
-										danh mục</a></li>
-							</ul>
-						</li>
-						<li>
-							<a href="#" class=" hvr-bounce-to-right"><i class="fa fa-desktop nav_icon"></i> <span
-									class="nav-label">Quản lý bán hàng</span><span class="fa arrow"></span></a>
-							<ul class="nav nav-second-level">
-								<li><a [routerLink]="['/ad-bill-sale']" routerLinkActive="router-link-active"
-										class=" hvr-bounce-to-right"><i class="fa fa-question-circle nav_icon"></i>Quản
-										lý hóa đơn bán</a></li>
-								<li><a [routerLink]="['/ad-caculative-points']" routerLinkActive="router-link-active"
-										class=" hvr-bounce-to-right"><i class="fa fa-question-circle nav_icon"></i>Quản
-										lý điểm tích lũy</a></li>
-								<li><a [routerLink]="['/ad-revenue-statistics']" routerLinkActive="router-link-active"
-										class=" hvr-bounce-to-right"><i class="fa fa-question-circle nav_icon"></i>Thống
-										kê báo cáo
-									</a></li>
-							</ul>
-						</li>
-						<li>
-							<a href="#" class=" hvr-bounce-to-right"><i class="fa fa-list nav_icon"></i> <span
-									class="nav-label">Quản lý chung</span><span class="fa arrow"></span></a>
-							<ul class="nav nav-second-level">
-								<li><a [routerLink]="['/ad-user']" routerLinkActive="router-link-active"
-										class=" hvr-bounce-to-right"><i class="fa fa-align-left nav_icon"></i>
-										Quản lý người dùng</a></li>
-								<li><a [routerLink]="['/ad-photo']" routerLinkActive="router-link-active"
-										class=" hvr-bounce-to-right"><i class="fa fa-align-left nav_icon"></i>
-										Quản lý hình ảnh</a></li>
-							</ul>
-						</li>
-
-					</ul>
-				</div>
-			</div>
-		</div>
-	</nav>
 	<div id="page-wrapper" class="gray-bg dashbard-1">
 		<div class="content-main">
 			<!--banner-->
@@ -190,7 +7,7 @@
 				<h2>
 					<a href="index.html">Home</a>
 					<i class="fa fa-angle-right"></i>
-					<span>Product</span>
+					<span>BillSales</span>
 				</h2>
 			</div>
 			<!--//banner-->
@@ -201,12 +18,15 @@
 						<div>
 							<h3>Quản lý sản phẩm</h3><br />
 							<button style="margin-bottom:1%;" class="btn btn-success" (click)="showAdd()">Thêm
-								+</button>
-							<table class="table table-bordered">
+								+</button><br/>
+							<input style="width:30%" placeholder="Tìm kiếm" type="text" [(ngModel)]="keyword" name="keyword" />
+							<button (click)="Search()">Tìm kiếm</button>
+							
+							<table style="margin-top:3%;" class="table table-bordered">
 								<thead>
 									<tr>
 										<th style="width:20%">Tên SP</th>
-										<th style="width:10%">Hình ảnh</th>
+										<!-- <th style="width:10%">Hình ảnh</th> -->
 										<th style="width:10%">Năm SX</th>
 										<th style="width:10%">Xuất xứ</th>
 										<th style="width:10%">Dòng SP</th>
@@ -216,12 +36,12 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr *ngFor="let item of items">
+									<tr *ngFor="let item of items | filter:filterTerm">
 										<td>{{item.name}}</td>
-										<td>
+										<!-- <td>
 											<img class="hinhanh" src="../assets/images/{{item.image}}" alt=""
 												style="width:50px; height:50px">
-										</td>
+										</td> -->
 										<td>{{item.yearOfManufacturer}}</td>
 										<td>{{item.origin}}</td>
 										<td>{{item.productype.productypeName}}</td>
@@ -240,6 +60,7 @@
 									</tr>
 								</tbody>
 							</table>
+							<pagination [totalItems]="30"></pagination>
 						</div>
 						<div class="clearfix"> </div>
 					</div>
@@ -271,11 +92,25 @@
 										<input type="text" class="form-control" value="" name="name"
 											[(ngModel)]="entity.name">
 									</div>
-									<div class="col-md-4">
+									<!-- <div class="col-md-4">
 										<label for="image">Hình ảnh:</label>
+										<div class="row" style="margin-bottom:15px;">
+											<div class="col-md-2">
+											  <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files[0].name)" style="display:none;" (onUploadFinished)="uploadFinished($event)" name="image" [(ngModel)]="entity.image">
+											  <button type="button" class="btn btn-success" (click)="file.click()">Upload File</button>
+											</div>
+											<div class="col-md-2">
+											  <span class="upload" *ngIf="progress > 0">
+												{{progress}}%
+											  </span>
+											  <span class="upload" *ngIf="message">
+												{{message}}
+											  </span>
+											</div>
+										  </div>
 										<input type="text" class="form-control" value="" name="image"
-											[(ngModel)]="entity.image">
-									</div>
+											[(ngModel)]="entity.image"> 
+									</div> -->
 								</div>
 								<div class="row">
 									<div class="col-md-4">
@@ -347,44 +182,71 @@
 								</div>
 								<div class="row">
 									<div class="col-md-12">
+										<label for="image">Hình ảnh:</label>
+										<div class="row" style="margin-bottom:15px;">
+											<div class="col-md-4">
+											  <input type="file"  #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;" (onUploadFinished)="uploadFinished($event)" name="image" [(ngModel)]="entity.image">
+											  <button type="button" class="btn btn-success" (click)="file.click()">Upload File</button>
+											</div>
+											<div class="col-md-8">
+											  <span class="upload" *ngIf="progress > 0">
+												{{progress}}%
+											  </span>
+											  <span class="upload" *ngIf="message">
+												{{message}}
+											  </span>
+											</div>
+										  </div>
+										<!-- <input type="text" class="form-control" value="" name="image"
+											[(ngModel)]="entity.image">  -->
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
 										<label for="generalIntroduction">Mô tả chung:</label>
-										<input type="text" class="form-control" value="" name="generalIntroduction"
-											[(ngModel)]="entity.generalIntroduction">
+										<ckeditor [editor]="Editor" data="Mô tả chung" name="generalIntroduction" [(ngModel)]="entity.generalIntroduction" ></ckeditor>
+										<!-- <input type="text" class="form-control" value="" name="generalIntroduction"
+											[(ngModel)]="entity.generalIntroduction"> -->
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-md-12">
 										<label for="detailIntroduction">Mô tả chi tiết:</label>
-										<input type="text" class="form-control" value="" name="detailIntroduction"
-											[(ngModel)]="entity.detailIntroduction">
+										<ckeditor [editor]="Editor" data="Mô tả chi tiết" name="detailIntroduction" [(ngModel)]="entity.detailIntroduction" ></ckeditor>
+										<!-- <input type="text" class="form-control" value="" name="detailIntroduction"
+											[(ngModel)]="entity.detailIntroduction"> -->
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-md-12">
 										<label for="detailIntroduction1">Mô tả chi tiết 1:</label>
-										<input type="text" class="form-control" value="" name="detailIntroduction1"
-											[(ngModel)]="entity.detailIntroduction1">
+										<ckeditor [editor]="Editor" data="Mô tả chi tiết 1" name="detailIntroduction1" [(ngModel)]="entity.detailIntroduction1" ></ckeditor>
+										<!-- <input type="text" class="form-control" value="" name="detailIntroduction1"
+											[(ngModel)]="entity.detailIntroduction1"> -->
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-md-12">
 										<label for="detailIntroduction2">Mô tả chi tiết 2:</label>
-										<input type="text" class="form-control" value="" name="detailIntroduction2"
-											[(ngModel)]="entity.detailIntroduction2">
+										<ckeditor [editor]="Editor" data="Mô tả chi tiết 2" name="detailIntroduction2" [(ngModel)]="entity.detailIntroduction2" ></ckeditor>
+										<!-- <input type="text" class="form-control" value="" name="detailIntroduction2"
+											[(ngModel)]="entity.detailIntroduction2"> -->
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-md-12">
 										<label for="detailIntroduction3">Mô tả chi tiết 3:</label>
-										<input type="text" class="form-control" value="" name="detailIntroduction3"
-											[(ngModel)]="entity.detailIntroduction3">
+										<ckeditor [editor]="Editor" data="Mô tả chi tiết 3" name="detailIntroduction3" [(ngModel)]="entity.detailIntroduction3" ></ckeditor>
+										<!-- <input type="text" class="form-control" value="" name="detailIntroduction3"
+											[(ngModel)]="entity.detailIntroduction3"> -->
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-md-12">
 										<label for="detaiIintroduction4">Mô tả chi tiết 4:</label>
-										<input type="text" class="form-control" value="" name="detaiIintroduction4"
-											[(ngModel)]="entity.detaiIintroduction4">
+										<ckeditor [editor]="Editor" data="Mô tả chi tiết 4" name="detaiIintroduction4" [(ngModel)]="entity.detaiIintroduction4" ></ckeditor>
+										<!-- <input type="text" class="form-control" value="" name="detaiIintroduction4"
+											[(ngModel)]="entity.detaiIintroduction4"> -->
 									</div>
 								</div>
 							</div>
@@ -500,49 +362,55 @@
 								<div class="row">
 									<div class="col-md-12">
 										<label for="generalIntroduction">Mô tả chung:</label>
-										<input type="text" class="form-control" value="" name="generalIntroduction"
-											[(ngModel)]="entity1.generalIntroduction">
+										<ckeditor [editor]="Editor" data="Mô tả chung" name="generalIntroduction" [(ngModel)]="entity1.generalIntroduction" ></ckeditor>
+										<!-- <input type="text" class="form-control" value="" name="generalIntroduction"
+											[(ngModel)]="entity.generalIntroduction"> -->
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-md-12">
 										<label for="detailIntroduction">Mô tả chi tiết:</label>
-										<input type="text" class="form-control" value="" name="detailIntroduction"
-											[(ngModel)]="entity1.detailIntroduction">
+										<ckeditor [editor]="Editor" data="Mô tả chi tiết" name="detailIntroduction" [(ngModel)]="entity1.detailIntroduction" ></ckeditor>
+										<!-- <input type="text" class="form-control" value="" name="detailIntroduction"
+											[(ngModel)]="entity.detailIntroduction"> -->
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-md-12">
 										<label for="detailIntroduction1">Mô tả chi tiết 1:</label>
-										<input type="text" class="form-control" value="" name="detailIntroduction1"
-											[(ngModel)]="entity1.detailIntroduction1">
+										<ckeditor [editor]="Editor" data="Mô tả chi tiết 1" name="detailIntroduction1" [(ngModel)]="entity1.detailIntroduction1" ></ckeditor>
+										<!-- <input type="text" class="form-control" value="" name="detailIntroduction1"
+											[(ngModel)]="entity.detailIntroduction1"> -->
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-md-12">
 										<label for="detailIntroduction2">Mô tả chi tiết 2:</label>
-										<input type="text" class="form-control" value="" name="detailIntroduction2"
-											[(ngModel)]="entity1.detailIntroduction2">
+										<ckeditor [editor]="Editor" data="Mô tả chi tiết 2" name="detailIntroduction2" [(ngModel)]="entity1.detailIntroduction2" ></ckeditor>
+										<!-- <input type="text" class="form-control" value="" name="detailIntroduction2"
+											[(ngModel)]="entity.detailIntroduction2"> -->
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-md-12">
 										<label for="detailIntroduction3">Mô tả chi tiết 3:</label>
-										<input type="text" class="form-control" value="" name="detailIntroduction3"
-											[(ngModel)]="entity1.detailIntroduction3">
+										<ckeditor [editor]="Editor" data="Mô tả chi tiết 3" name="detailIntroduction3" [(ngModel)]="entity1.detailIntroduction3" ></ckeditor>
+										<!-- <input type="text" class="form-control" value="" name="detailIntroduction3"
+											[(ngModel)]="entity.detailIntroduction3"> -->
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-md-12">
 										<label for="detaiIintroduction4">Mô tả chi tiết 4:</label>
-										<input type="text" class="form-control" value="" name="detaiIintroduction4"
-											[(ngModel)]="entity1.detaiIintroduction4">
+										<ckeditor [editor]="Editor" data="Mô tả chi tiết 4" name="detaiIintroduction4" [(ngModel)]="entity1.detaiIintroduction4" ></ckeditor>
+										<!-- <input type="text" class="form-control" value="" name="detaiIintroduction4"
+											[(ngModel)]="entity.detaiIintroduction4"> -->
 									</div>
 								</div>
 							</div>
 							<div class="modal-footer">
 								<br />
-								<button type="submit" class="btn btn-default">Submit</button>
+								<!-- <button type="submit" class="btn btn-default">Submit</button> -->
 								<button type="button" class="btn btn-default" (click)="editAndADD1.hide()"
 									data-dismiss="modal">Close</button>
 							</div>

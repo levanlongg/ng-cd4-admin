@@ -30,9 +30,7 @@ export class AdCategoryService {
       return res;
     }));
   }
-//   editItem(id: any, data: any): Observable<any> {
-//     return this._http.put(this.urlAPI + id, data).pipe(map((res: Response) => res.json()))
-// }
+
   editItem(id: string, data: any): Observable<any> {
     //debugger;
     return this._http.put(this.urlAPI + "/" + id, data,HttpOptionss).pipe(map(res => {

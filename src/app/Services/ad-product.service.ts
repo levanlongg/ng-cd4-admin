@@ -1,7 +1,8 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHandler, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+
 
 const HttpOptionss = {
   headers: new HttpHeaders({ "Content-Type": "application/json" })
@@ -9,9 +10,9 @@ const HttpOptionss = {
 @Injectable({
   providedIn: 'root'
 })
-export class AdImportInvoiceService {
+export class AdProductService {
 
-  public urlAPI = "https://localhost:44338/api/ImportInvoices";
+  public urlAPI = "https://localhost:44338/api/Products";
   constructor(private _http: HttpClient) { }
 
   getList(): Observable<any[]> {
@@ -20,7 +21,6 @@ export class AdImportInvoiceService {
     }));
   }
   postItme(data: any): Observable<any> {
-    //debugger;
     return this._http.post<any>(this.urlAPI, data, HttpOptionss).pipe(map(res => {
       return res;
     }));
@@ -30,11 +30,7 @@ export class AdImportInvoiceService {
       return res;
     }));
   }
-//   editItem(id: any, data: any): Observable<any> {
-//     return this._http.put(this.urlAPI + id, data).pipe(map((res: Response) => res.json()))
-// }
   editItem(id: string, data: any): Observable<any> {
-    //debugger;
     return this._http.put(this.urlAPI + "/" + id, data,HttpOptionss).pipe(map(res => {
       return res;
     }));
@@ -46,12 +42,9 @@ export class AdImportInvoiceService {
     }));
   }
   Search(keyword: string): Observable<any[]> {
-    return this._http.get<any>(this.urlAPI + "?search=" + keyword).pipe(map(res=>{
+    return this._http.get<any>(this.urlAPI +"/"+ "search" +"/"+ keyword).pipe(map(res => {
       return res;
-    }))
- }
-  findByTitle(title): Observable<any> {
-    return this._http.get(`${this.urlAPI}?title=${title}`);
-  }
-  
+    }));
 }
+}
+
